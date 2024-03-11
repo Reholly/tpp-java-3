@@ -3,6 +3,7 @@
 <%@page import="java.io.OutputStream"%>
 <%@page import="java.net.URLEncoder"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <%
     // Укажите путь к файлу, который нужно скачать
     String filePath = request.getParameter("path");

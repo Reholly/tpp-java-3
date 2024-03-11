@@ -14,7 +14,4 @@ public class DownloadServlet extends HttpServlet {
         request.getRequestDispatcher("Download.jsp").forward(request, response);
 
     }
-
-    public void destroy() {
-    }
 }

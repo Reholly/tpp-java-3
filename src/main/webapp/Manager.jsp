@@ -19,10 +19,15 @@
 <html>
 <head>
     <title>Менеджер файлов</title>
+
 </head>
 <body>
     <h1>Текущая директория: "<%=directory%> "</h1>
     <p><a href=<%="?path="+parentDirectoryPath%>/>Назад</p>
+    <%
+        String generatedAt = (String) request.getAttribute("generationTime"); // Получаем список из объекта запроса
+    %>
+    <p><%=generatedAt%></p>
     <table>
         <tr>
             <th>Папка</th>
@@ -37,7 +42,7 @@
         <tr>
             <th><%= item.getName()%></th>
             <th><a href=<%="?path="+item.getAbsolutePath()%>/>Перейти</th>
-            <th><%= item.length()%></th>
+            <th></th>
             <th><%= new Date(item.lastModified())%></th>
         </tr>
         <% } %>

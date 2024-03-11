@@ -1,6 +1,8 @@
 package com.example.tppjava3;
 
 import java.io.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
@@ -22,12 +24,13 @@ public class HelloServlet extends HttpServlet {
             files = new File[0];
         }
 
+        Date generationDate = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yy HH:mm:ss");
+
+        request.setAttribute("generationTime",dateFormat.format(generationDate));
         request.setAttribute("folders", folders);
         request.setAttribute("files", files);
         request.getRequestDispatcher("Manager.jsp").forward(request, response);
 
-    }
-
-    public void destroy() {
     }
 }
