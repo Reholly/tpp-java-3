@@ -22,7 +22,8 @@
 
 </head>
 <body>
-    <h1>Текущая директория: "<%=directory%> "</h1>
+    <h1>Текущая директория (по URL, вероятно не настоящий): "<%=directory%> "</h1>
+    <h1>Текущая директория: "<%=(String) request.getAttribute("currentPath")%> "</h1>
     <p><a href=<%="?path="+parentDirectoryPath%>/>Назад</p>
     <%
         String generatedAt = (String) request.getAttribute("generationTime"); // Получаем список из объекта запроса

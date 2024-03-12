@@ -12,6 +12,9 @@ import java.io.IOException;
 
 @WebServlet(urlPatterns = {"/Login"})
 public class LoginServlet extends HttpServlet {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getRequestDispatcher("/Login.jsp").forward(request, response);
+    }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String login = request.getParameter("login");
@@ -21,8 +24,8 @@ public class LoginServlet extends HttpServlet {
             response.getWriter().println("incorrect password or login");
             return;
         }
-        Utility.SetLoginAndPasswordInSession(request, login, password);
-
-        response.sendRedirect(Utility.RedirectOn(request.getRequestURL().toString(), "/Manager"));
+        request.getSession().setAttribute("login", login);
+        request.getSession().setAttribute("password", password);
+        response.sendRedirect(Utility.RedirectOn(request.getRequestURL().toString(), "/Manager?path=/"));
     }
 }

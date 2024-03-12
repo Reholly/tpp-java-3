@@ -12,9 +12,12 @@ import service.Utility;
 
 import java.io.IOException;
 
-@WebServlet(urlPatterns = {"Register"})
+@WebServlet(urlPatterns = {"/Register"})
 public class RegisterServlet extends HttpServlet {
 
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getRequestDispatcher("/Register.jsp").forward(request, response);
+    }
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String login = request.getParameter("login");
         String email = request.getParameter("email");
@@ -30,7 +33,8 @@ public class RegisterServlet extends HttpServlet {
         }
 
         AuthService.CreateUser(new User(login, password, email));
-        Utility.SetLoginAndPasswordInSession(request, login, password);
+        request.getSession().setAttribute("login", login);
+        request.getSession().setAttribute("password", password);
         try {
             Utility.CreateNewUserFolder(login);
         } catch (Exception ex) {
@@ -38,9 +42,6 @@ public class RegisterServlet extends HttpServlet {
             return;
         }
 
-        response.sendRedirect(Utility.RedirectOn(request.getRequestURL().toString(), "/Manager"));
-
-
-
+        response.sendRedirect(Utility.RedirectOn(request.getRequestURL().toString(), "/Manager?path=/"));
     }
 }

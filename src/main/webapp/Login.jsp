@@ -9,9 +9,9 @@
 <html>
 <head>
     <title>Вход</title>
-    <form action="log" method="POST">
-        <input type="text" name="login"/> Login:
-        <input type="password" name="password   "/> Password:
+    <form action="Login" method="POST">
+        <input type="text" name="login"/> Логин:
+        <input type="password" name="password"/> Пароль:
         <input type="submit" value="Войти">
     </form>
 </head>
