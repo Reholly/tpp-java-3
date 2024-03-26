@@ -9,6 +9,7 @@ import service.AuthService;
 import service.Utility;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 @WebServlet(urlPatterns = {"/Login"})
 public class LoginServlet extends HttpServlet {
@@ -20,9 +21,13 @@ public class LoginServlet extends HttpServlet {
         String login = request.getParameter("login");
         String password = request.getParameter("password");
 
-        if(AuthService.GetUser(login, password) == null) {
-            response.getWriter().println("incorrect password or login");
-            return;
+        try {
+            if(AuthService.GetUser(login, password) == null) {
+                response.getWriter().println("incorrect password or login");
+                return;
+            }
+        } catch (SQLException | ClassNotFoundException | InstantiationException | IllegalAccessException e) {
+            response.getWriter().println("error ");
         }
 
         request.getSession().setAttribute("login", login);
