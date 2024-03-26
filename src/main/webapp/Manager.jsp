@@ -22,7 +22,7 @@
 
 </head>
 <body>
-    <h1>Текущая директория (по URL, вероятно не настоящий): "<%=directory%> "</h1>
+
     <h1>Текущая директория: "<%=(String) request.getAttribute("currentPath")%> "</h1>
     <p><a href=<%="?path="+parentDirectoryPath%>/>Назад</p>
     <%

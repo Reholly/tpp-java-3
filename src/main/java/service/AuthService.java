@@ -12,6 +12,7 @@ public class AuthService {
             put("someuser", new User("someuser", "12345", "someuser@gmail.com"));
         }
     };
+
     public static  void CreateUser(User user) {
         Users.put(user.getLogin(), user);
     }

@@ -19,9 +19,7 @@ public class FileServlet extends HttpServlet {
         String login = (String) request.getSession().getAttribute("login");
         String password = (String) request.getSession().getAttribute("password");
 
-        User user = AuthService.GetUser(login, password);
-
-        if(user == null) {
+        if (login == null && password == null ) {
             response.sendRedirect(Utility.RedirectOn(request.getRequestURL().toString(), "/Login"));
             return;
         }

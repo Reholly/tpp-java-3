@@ -15,6 +15,8 @@
         Пароль: <input type="password" name="password"/>
         <input type="submit" value="Зарегистрироваться">
     </form>
+
+    <a href="Login">Войти (я уже зарегистрирован</a>
 </head>
 <body>
 
